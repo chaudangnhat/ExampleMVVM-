@@ -12,17 +12,17 @@ import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.TextView
 import com.gauravgoyal.mvvm_with_testing.R
-import com.gauravgoyal.mvvm_with_testing.news.modle.Article
+import com.gauravgoyal.mvvm_with_testing.news.model.Article
 import com.gauravgoyal.mvvm_with_testing.news.view.adapter.NewsAdapter
 import com.gauravgoyal.mvvm_with_testing.news.view.callback.OnClickCallback
-import com.gauravgoyal.mvvm_with_testing.news.viewmodle.NewsViewModel
+import com.gauravgoyal.mvvm_with_testing.news.viewmodel.NewsViewModel
 import com.gauravgoyal.mvvm_with_testing.newsdetail.view.activity.NewsDetailActivity
 import kotlinx.android.synthetic.main.fragment_news_list.*
 
 class ArticleListFragment : Fragment(), OnClickCallback {
 
     companion object {
-        val TAG = "ArticleListFragment"
+        const val TAG = "ArticleListFragment"
     }
 
     private var newsAdapter: NewsAdapter? = null
@@ -75,6 +75,5 @@ class ArticleListFragment : Fragment(), OnClickCallback {
             }
         })
     }
-
 
 }

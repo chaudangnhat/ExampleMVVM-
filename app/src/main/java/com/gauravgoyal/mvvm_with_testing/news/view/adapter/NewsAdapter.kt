@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 import com.gauravgoyal.mvvm_with_testing.R
-import com.gauravgoyal.mvvm_with_testing.news.modle.Article
+import com.gauravgoyal.mvvm_with_testing.news.model.Article
 import com.gauravgoyal.mvvm_with_testing.news.view.callback.OnClickCallback
 import com.gauravgoyal.mvvm_with_testing.utility.DateUtils
 import kotlinx.android.synthetic.main.news_list_item.view.*
@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.news_list_item.view.*
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     internal var articleList: List<Article>? = null
-    var callBackItem: OnClickCallback? = null
+    private var callBackItem: OnClickCallback? = null
 
     fun setCallBack(callBack: OnClickCallback){
-        callBackItem = callBack
+        this.callBackItem = callBack
     }
 
     fun setProjectList(articleList: List<Article>) {
@@ -53,25 +53,24 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-
         return ArticleViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.news_list_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.onBindView(articleList!![position],callBackItem!!)
-
     }
 
     override fun getItemCount(): Int {
         return if (articleList == null) 0 else articleList!!.size
     }
 
-    class ArticleViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val txtTitle: TextView = view.title
-        val txtAuthor: TextView = view.author
-        val txtSource: TextView = view.source
-        val txtPublishedAt: TextView = view.publishedAt
-        val itemContainer: LinearLayout = view.item_container
+    class ArticleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        private val txtTitle: TextView = view.title
+        private val txtAuthor: TextView = view.author
+        private val txtSource: TextView = view.source
+        private val txtPublishedAt: TextView = view.publishedAt
+        private val itemContainer: LinearLayout = view.item_container
 
         fun onBindView(artic :Article, callBack: OnClickCallback){
             txtTitle.text = artic.title
@@ -81,7 +80,6 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
             itemContainer.setOnClickListener {
                 callBack.onClick(artic)
             }
-
         }
     }
 }

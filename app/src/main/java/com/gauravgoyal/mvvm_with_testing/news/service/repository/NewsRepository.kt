@@ -1,18 +1,13 @@
-package com.gauravgoyal.mvvm_with_testing.service.respository
+package com.gauravgoyal.mvvm_with_testing.news.service.repository
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 
 import com.gauravgoyal.mvvm_with_testing.BuildConfig
-import com.gauravgoyal.mvvm_with_testing.news.modle.News
+import com.gauravgoyal.mvvm_with_testing.news.model.News
 
-import java.io.IOException
-
-import okhttp3.HttpUrl
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 
-import okhttp3.Request
 import retrofit2.Response
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,6 +16,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NewsRepository private constructor() {
+
     private val newsService: NewsService
 
     init {
@@ -62,6 +58,7 @@ class NewsRepository private constructor() {
     }
 
     companion object {
+
         private var projectRepository: NewsRepository? = null
 
         val instance: NewsRepository

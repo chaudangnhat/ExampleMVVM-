@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import com.gauravgoyal.mvvm_with_testing.news.view.adapter.NewsAdapter;
 import com.gauravgoyal.mvvm_with_testing.news.view.fragment.ArticleListFragment;
-import com.gauravgoyal.mvvm_with_testing.news.viewmodle.NewsViewModel;
+import com.gauravgoyal.mvvm_with_testing.news.viewmodel.NewsViewModel;
 
 import org.junit.Rule;
 import org.junit.Test;

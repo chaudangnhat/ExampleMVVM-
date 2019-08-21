@@ -1,11 +1,8 @@
-package com.gauravgoyal.mvvm_with_testing.news.modle
+package com.gauravgoyal.mvvm_with_testing.news.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-/**
- * Created by gauravgoyal on 15/12/17.
- */
 class News {
     @SerializedName("status")
     @Expose

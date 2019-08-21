@@ -3,6 +3,16 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="$PROJECT_DIR$/../DemoRxJava2Retrofit-master/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../DemoRxJava2Retrofit-master/app/src/main/java/com/demo/retrofitrxjava/network/RequestInterface.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../DemoRxJava2Retrofit-master/app/src/main/java/com/demo/retrofitrxjava/network/RequestInterface.kt">
           <value>
             <set />
@@ -38,6 +48,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/model/Article.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/model/News.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/model/Source.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/modle/Article.kt">
           <value>
             <set />
@@ -49,6 +74,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/modle/Source.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/service/repository/NewsRepository.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/service/repository/NewsService.kt">
           <value>
             <set />
           </value>
@@ -79,6 +114,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/view/fragment/ArticleListFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/news/viewmodel/NewsViewModel.kt">
           <value>
             <set />
           </value>
@@ -298,6 +338,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/utility/Constants.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gauravgoyal/mvvm_with_testing/utility/DateUtils.kt">
           <value>
             <set />
@@ -364,6 +409,11 @@
           </value>
         </entry>
         <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/fragment.java">
           <value>
             <set />
           </value>

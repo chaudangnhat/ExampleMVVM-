@@ -1,12 +1,11 @@
-package com.gauravgoyal.mvvm_with_testing.service.respository
+package com.gauravgoyal.mvvm_with_testing.news.service.repository
 
-import com.gauravgoyal.mvvm_with_testing.news.modle.News
+import com.gauravgoyal.mvvm_with_testing.news.model.News
 import com.gauravgoyal.mvvm_with_testing.utility.Constants
 
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
-import java.util.*
 
 internal interface NewsService {
 

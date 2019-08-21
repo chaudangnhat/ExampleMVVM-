@@ -9,7 +9,9 @@ import com.gauravgoyal.mvvm_with_testing.news.view.fragment.ArticleListFragment
 
 class MainActivity : AppCompatActivity() {
 
-    final val TAG = this.javaClass.simpleName.toString()
+    companion object {
+        val TAG = this.javaClass.simpleName.toString()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,9 +1,3 @@
-project.ext {
-    appcompat = "28.0.0"
-    arch = "1.1.1"
-    retrofit = "2.0.2"
-    constraintLayout = "1.0.2"
-}
 
 def NEWS_API_KEY = '"' + NewsApiKey + '"'
 
@@ -11,18 +5,24 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
     defaultConfig {
         applicationId "com.gauravgoyal.mvvm_with_testing"
-        minSdkVersion 16
-        targetSdkVersion 28
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "NewsApiKey", NEWS_API_KEY
+        multiDexEnabled = true
     }
     buildTypes {
         release {
@@ -30,60 +30,87 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    kapt {
+        generateStubs = true
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    // testing libraries
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    androidTestCompile 'com.android.support.test:rules:0.5'
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
-    androidTestCompile 'org.mockito:mockito-core:2.6.8'
-
-// views
-    implementation "com.android.support:cardview-v7:$project.appcompat"
-    implementation "com.android.support:recyclerview-v7:$project.appcompat"
-    implementation "com.android.support.constraint:constraint-layout:$project.constraintLayout"
-
-    // lifecycles
-    implementation "android.arch.lifecycle:runtime:$project.arch"
-    implementation "android.arch.lifecycle:extensions:$project.arch"
-    annotationProcessor "android.arch.lifecycle:compiler:$project.arch"
 
     //networking
-    implementation "com.squareup.retrofit2:retrofit:$project.retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$project.retrofit"
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
 
-//support
-    implementation "com.android.support:appcompat-v7:28.0.0"
-    compile "com.android.support:support-v4:$project.appcompat"
-    compile 'com.android.support:design:28.0.0', {
-        exclude module: 'support-annotations'
-    }
+    //dagger 2
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support, { exclude group: 'com.android.support' }
+    kapt deps.dagger.compiler
+    kapt deps.dagger.android_support_compiler
+    annotationProcessor deps.dagger.compiler
 
-    //rx
-    compile 'io.reactivex.rxjava2:rxjava:2.1.10'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    // Support libraries
+    implementation deps.support.app_compat
+    implementation deps.support.fragment_runtime_ktx, { exclude group: 'androidx.core:core:1.1.0-rc01'}
 
-    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude group: 'com.android.support', module: 'design'
-        exclude group: 'com.android.support', module: 'recyclerview-v7'
-    }
+    implementation deps.support.design
+
+    // Architecture components
+    implementation deps.lifecycle.runtime
+    kapt deps.lifecycle.compiler
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+    implementation deps.room.rxjava2
+    implementation deps.lifecycle.extensions
+
+    // RxJava
+    implementation deps.rx_android
+    implementation deps.rxjava2
+
+    // Kotlin
+    implementation deps.kotlin.stdlib
+
+    // Dependencies for local unit tests
+    testImplementation deps.junit
+    testImplementation deps.mockito.all
+    testImplementation deps.hamcrest
+    testImplementation deps.arch_core.testing
+    testImplementation deps.kotlin.stdlib
+    testImplementation deps.kotlin.test
+
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+    androidTestImplementation deps.room.testing
+    androidTestImplementation deps.arch_core.testing
+
+    // Dependencies for Android unit tests
+    androidTestImplementation deps.junit
+    androidTestImplementation deps.mockito.core, { exclude group: 'net.bytebuddy' }
+    androidTestImplementation deps.dexmaker
+
+    // Espresso UI Testing
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.intents
+
+    // Resolve conflicts between main and test APK:
+    androidTestImplementation deps.support.annotations
+    androidTestImplementation deps.support.app_compat
+    androidTestImplementation deps.support.design
+
 }

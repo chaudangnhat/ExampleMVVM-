@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-import com.gauravgoyal.mvvm_with_testing.MainActivity;
+import com.gauravgoyal.mvvm_with_testing.features.main.view.activity.MainActivity;
 import com.gauravgoyal.mvvm_with_testing.R;
 
 import org.hamcrest.Description;
